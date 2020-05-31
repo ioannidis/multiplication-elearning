@@ -20,8 +20,7 @@ router.post('/login', (req, res, next) => {
 
         if (err || !user) {
             return res.status(400).json({
-                message: 'Something went wrong while authenticating',
-                user   : user
+                message: 'Something went wrong while authenticating'
             });
         }
 
@@ -30,9 +29,17 @@ router.post('/login', (req, res, next) => {
                 res.send(err);
             }
 
+            const principal = {
+                _id: user._id,
+                username: user.username,
+                role: user.role,
+                firstName: user.firstname,
+                enabled: user.enabled
+            }
+
             data = {
                 message: 'User has been successfully signed in.',
-                token: jwt.sign({user}, secretKey, {expiresIn: '1h'})
+                token: jwt.sign({principal}, secretKey, {expiresIn: '12h'})
             };
 
             return res.status(200).json(data);

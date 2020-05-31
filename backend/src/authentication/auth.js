@@ -15,9 +15,9 @@ passport.use(new LocalStrategy({
     },
     async (username, password, cb) => {
 
-        try {
+         try {
             const payload = await authService.findOne({username: username});
-            const user = payload.data.user;
+            const user = payload.user;
 
             if (!user || bcrypt.compareSync(user.password, password)) {
                 return cb(null, false, {message: 'Incorrect username or password.'});

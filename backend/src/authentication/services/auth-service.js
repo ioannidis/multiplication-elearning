@@ -11,7 +11,7 @@ const find = async (filter) => {
 
 const findOne = async (filter) => {
     try {
-        return await userRepository.findOne(filter);
+        return {user: await userRepository.findOne(filter)};
     } catch (err) {
         return err;
     }
