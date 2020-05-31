@@ -2,11 +2,12 @@ const express   = require('express');
 
 const router                = express.Router();
 const achievementService    = require('../services/achievement-service');
+const accessMiddleware      = require('../../shared/access-middleware');
 
 
-router.get('/', async (req, res, next) => {
+router.get('/', [accessMiddleware.hasAccess(['teacher'])], async (req, res, next) => {
     try {
-        const achievements = await achievementService.find({});
+        const achievements = await achievementService.find({username: req.username});
 
         if (!achievements)
             return res.status(404).json({error: {status: 404, message: 'Not found'}});
@@ -17,19 +18,20 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.post('/', [accessMiddleware.hasAccess(['teacher'])], async (req, res, next) => {
     try {
-        const achievement = await achievementService.findOne({id: req.params.id});
+        const achievements = await achievementService.findOne({username: req.username});
 
-        if (!achievement)
-            return res.status(404).json({error: {status: 404, message: 'Not found'}});
-        return res.json({achievement});
+        if (!achievements.lessons[req.body.lessonId] || achievements.lessons[req.body.lessonId].percentage < req.body.percentage) {
+            await achievementService.findOneAndUpdate({username: req.username}, req.body);
+        }
+
+        return res.sendStatus(200);
 
     } catch (err) {
         return res.status(500).json({error: err});
     }
-});
-
+})
 
 
 module.exports = router;

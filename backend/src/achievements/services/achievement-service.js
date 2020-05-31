@@ -16,6 +16,14 @@ const findOne = async (filter) => {
     }
 };
 
+const findOneAndUpdate = async (filter, data) => {
+    try {
+        return await achievementRepository.findOneAndUpdate(filter, data);
+    } catch (err) {
+        return err;
+    }
+};
+
 const save = async (data) => {
     try {
         return await achievementRepository.save(data);
@@ -27,5 +35,6 @@ const save = async (data) => {
 module.exports = {
     find,
     findOne,
+    findOneAndUpdate,
     save
 };
