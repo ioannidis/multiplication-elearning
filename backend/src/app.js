@@ -6,9 +6,10 @@ const helmet        = require('helmet');
 const passport      = require('passport');
 const passportJwt   = require('passport-jwt');
 
-const authRouter        = require('./authentication/api/routes');
-const lessonRouter        = require('./lesson/api/routes');
-const userRouter        = require('./user/api/routes');
+const authRouter            = require('./authentication/api/routes');
+const lessonRouter          = require('./lesson/api/routes');
+const userRouter            = require('./user/api/routes');
+const achievementRouter     = require('./achievements/api/routes');
 
 require('./authentication/auth');
 
