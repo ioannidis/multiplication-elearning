@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const lessonSchema = new mongoose.Schema({
-    id: {
-        type: Number,
+    url: {
+        type: String,
         required: true,
         unique: true,
         index: true
@@ -13,6 +13,13 @@ const lessonSchema = new mongoose.Schema({
     },
     content: {
         type: String,
+        required: true
+    },
+    prerequisites: {
+        type: [String]
+    },
+    order: {
+        type: Number,
         required: true
     }
 });

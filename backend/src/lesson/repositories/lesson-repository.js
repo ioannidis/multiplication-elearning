@@ -4,6 +4,15 @@ const lessonSchema    = require('../schemas/lesson-schema');
 const Lesson          = mongoose.model('Lesson', lessonSchema);
 
 
+const find = async (filter) => {
+    try {
+        return await Lesson.find(filter)
+    } catch (err) {
+        return err;
+    }
+
+};
+
 const findOne = async (filter) => {
     try {
         return await Lesson.findOne(filter)
@@ -13,17 +22,18 @@ const findOne = async (filter) => {
 
 };
 
-const save = async (data) => {
+const findOneAndUpdate = async (filter, data) => {
     try {
-        const user = new User(data);
-        user.save();
-        return {data: {user}};
+        return await Lesson.findOneAndUpdate(filter, data)
     } catch (err) {
         return err;
     }
-}
+
+};
+
 
 module.exports = {
+    find,
     findOne,
-    save
+    findOneAndUpdate
 };
