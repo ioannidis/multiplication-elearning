@@ -8,9 +8,9 @@ const userService   = require('../services/auth-service');
 const secretKey     = process.env.secretKey || 'kr8EJUH19mN';
 
 
-router.post('/register', async (req, res, next) => {
-    userService.save(req.body);
-    return res.sendStatus(200);
+router.post('/signup', async (req, res, next) => {
+    await userService.save(req.body);
+    return res.status(200).json({});
 })
 
 router.post('/login', (req, res, next) => {
