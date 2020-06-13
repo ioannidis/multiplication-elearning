@@ -4,7 +4,7 @@ const hasAccess = (roles) => {
     return (req, res, next) => {
         const principal = jwt.decode(req.headers['authorization'].slice(7)).principal;
 
-        if (req.username === 'me') {
+        if (req.username === 'me' || req.username === principal.username) {
             req.username = principal.username;
             next();
         } else if (!roles.includes(principal.role)) {
