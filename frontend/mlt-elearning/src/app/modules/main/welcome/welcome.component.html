@@ -1,0 +1,13 @@
+<div class="p-grid mb-5">
+
+  <div class="p-col-8">
+    <p>Tha mathoume tin propaideia mpastardakia!</p>
+  </div>
+
+  <div class="p-col-4">
+    <app-login *ngIf="formType == 1" (formType)="switchForm($event)"></app-login>
+    <app-signup *ngIf="formType == 2" (formType)="switchForm($event)"></app-signup>
+    <app-password-reset *ngIf="formType == 3" (formType)="switchForm($event)"></app-password-reset>
+  </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="card-body p-0">
+  <!-- Nested Row within Card Body -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="p-5">
+        <form (ngSubmit)="onAuthenticate()" [formGroup]="form" class="user">
+          <div class="form-group">
+            <input id="username" type="text" class="w-100" name="username" placeholder="Username"
+                   pInputText
+                   formControlName="username"/>
+          </div>
+          <div class="form-group">
+            <input id="password" class="w-100" type="password" name="password" placeholder="Password"
+                   pInputText
+                   formControlName="password" />
+          </div>
+
+          <!-- Error message -->
+          <div *ngIf="isAuthFailed"  class="w-100">
+            <div class="alert alert-danger">Invalid credentials!</div>
+          </div>
+
+          <button pButton type="submit" label="Login" class="ui-button-primary w-100"></button>
+        </form>
+        <hr>
+        <div class="text-center">
+          <a class="small" (click)="switchForm(3)">Forgot Password?</a>
+        </div>
+        <div class="text-center">
+          <a class="small" (click)="switchForm(2)">Create an Account!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container-fluid">
+
+  <!-- Error Text -->
+  <div class="text-center">
+    <div class="error mx-auto">{{status}}</div>
+    <p class="lead text-gray-800 mb-5">{{message}}</p>
+    <p class="text-gray-500 mb-0">{{description}}</p>
+    <div *ngIf="redirectionLabel">
+      <a [routerLink]="redirectionLink">← {{redirectionLabel}}</a>
+    </div>
+  </div>
+
+</div>
+

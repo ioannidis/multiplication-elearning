@@ -1,0 +1,38 @@
+<div class="p-grid p-justify-between mb-4">
+  <div class="p-col-6">
+    <h3 class="mb-0 text-gray-800">Dashboard</h3>
+  </div>
+</div>
+
+<div class="p-grid p-justify-between mb-2">
+  <div class="p-col-6">
+    <h6 class="mb-0 text-gray-600">Lessons</h6>
+  </div>
+</div>
+
+<div class="p-grid mb-5">
+
+  <div *ngFor="let lesson of lessons" class="p-col-3">
+    <button class="btn w-100" (click)="openLink(lesson.url)"
+       [disabled]="getLessonStatus(lesson._id, lesson.order) === 'dark'">
+      <div class="card shadow h-100 py-2"
+           [ngClass]="'border-left-'+getLessonStatus(lesson._id, lesson.order)">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <h4 class="font-weight-bold text-uppercase mb-1"
+                  [ngClass]="'text-'+getLessonStatus(lesson._id, lesson.order)">{{lesson.title}}</h4>
+              <div class="text-xs font-weight-bold text-uppercase mb-1"
+                   [ngClass]="'text-'+getLessonStatus(lesson._id, lesson.order)">{{achievements[lesson._id]?.percentage}}</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+
+</div>
+
