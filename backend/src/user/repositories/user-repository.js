@@ -23,7 +23,7 @@ const findOne = async (filter) => {
 const save = async (data) => {
     try {
         const user = new User(data);
-        user.save();
+        await user.save();
         return {data: {user}};
     } catch (err) {
         return err;

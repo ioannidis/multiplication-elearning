@@ -17,13 +17,20 @@ const userSchema = new mongoose.Schema({
         unique: true,
         index: true
     },
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String
+    },
     role: {
         type: String,
         required: true
     },
     enabled: {
         type: Boolean,
-        default: false
+        default: true
     }
 });
 

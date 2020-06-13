@@ -10,12 +10,12 @@ const roleMiddleware = require('../../shared/has-role-middleware');
 router.get('/me', async (req, res, next) => {
     try {
         const tokenPayload = jwt.decode(req.headers['authorization'].slice(7)).principal;
-        const users = await userService.findOne({username: tokenPayload.username});
+        const user = await userService.findOne({username: tokenPayload.username});
 
-        if (!users)
+        if (!user)
             return res.status(404).json({error: {status: 404, message: 'Not found'}});
-        users.password = '****'
-        return res.json({users});
+        user.password = '****'
+        return res.json({user});
 
     } catch (err) {
         return res.status(500).json({error: err});
