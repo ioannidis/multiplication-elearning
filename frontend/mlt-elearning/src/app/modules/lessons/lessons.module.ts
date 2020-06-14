@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { LessonsComponent } from './lessons/lessons.component';
 import { LessonsShowComponent } from './lessons-show/lessons-show.component';
 import {LessonsRoutingModule} from "./lessons-routing.module";
+import {LayoutModule} from "../../shared/layout/layout.module";
+import {TabViewModule} from 'primeng/tabview';
+import {StepsModule} from 'primeng/steps';
+import {ReviewModule} from "../review/review.module";
 
 
 
@@ -13,7 +17,11 @@ import {LessonsRoutingModule} from "./lessons-routing.module";
   ],
   imports: [
     CommonModule,
-    LessonsRoutingModule
+    LessonsRoutingModule,
+    LayoutModule,
+    ReviewModule,
+    TabViewModule,
+    StepsModule
   ]
 })
 export class LessonsModule { }

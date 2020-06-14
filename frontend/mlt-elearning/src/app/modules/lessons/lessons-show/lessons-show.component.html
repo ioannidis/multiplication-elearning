@@ -1,1 +1,29 @@
-<p>lessons-show works!</p>
+<div class="p-grid p-justify-between mb-4">
+  <div class="p-col-6">
+    <h3 class="mb-0 text-gray-800">{{lesson?.title}}</h3>
+  </div>
+</div>
+
+<div class="p-grid mb-5">
+
+  <div class="p-col-12">
+
+    <p-tabView>
+      <p-tabPanel header="Theory" [selected]="true" [disabled]="isReviewActive">
+        <div [innerHTML]="lesson?.content"></div>
+      </p-tabPanel>
+      <p-tabPanel header="Mini Review" [disabled]="!isReviewActive">
+
+        <p-steps class="review-steps" [model]="questions" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+
+        <app-mini-review [numberOfExercises]="5"></app-mini-review>
+
+        <button class="btn btn-primary" (click)="nextStep()">Next</button>
+
+      </p-tabPanel>
+    </p-tabView>
+
+  </div>
+
+</div>
+
