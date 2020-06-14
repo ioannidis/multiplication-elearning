@@ -15,4 +15,8 @@ export class LessonService {
   find(): Observable<any> {
     return this.http.get(this.BASE_URL);
   }
+
+  findOne(lessonId): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/${lessonId}`)
+  }
 }
