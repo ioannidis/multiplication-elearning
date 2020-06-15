@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 .review-steps .ui-state-complete .ui-menuitem-link .ui-steps-number{
-  background-color: green !important;
+  background-color: #d5d5d5 !important;
   pointer-events: none;
+}
+
+.review-tabview .ui-tabview-nav {
+  display: none;
 }
