@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {from, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,6 @@ export class MultiplicationService {
 
   constructor() {
     for (let k = 0; k <= 10; k++) {
-      console.log(k)
       const temp = [];
       for (let i = 0; i <= 10; i++) {
         const row = [];
@@ -31,7 +31,7 @@ export class MultiplicationService {
     }
   }
 
-  getMultiplication(num: number) {
-    return this.multiplication[num];
+  getMultiplication(num: number): Observable<any> {
+    return from([this.multiplication[num]]);
   }
 }
