@@ -1,1 +1,13 @@
-<p>exercise-four works!</p>
+<div class="math mb-2" [formGroup]="parentFormGroup">
+  <p>Which multiplication gives the following result?</p>
+  <h1>{{selected[2]}}</h1>
+  <p-selectButton [options]="options" [formControlName]="control"></p-selectButton>
+</div>
+<button pButton
+        class="ui-button"
+        type="button"
+        label="Next"
+        icon="pi pi-angle-right"
+        iconPos="right"
+        [disabled]="isControlInvalid()"
+        (click)="nextStep()"></button>

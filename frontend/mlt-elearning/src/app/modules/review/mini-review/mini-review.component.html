@@ -1,1 +1,31 @@
-<p>mini-review works!</p>
+<p-steps class="review-steps" [model]="questions" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+
+<div [formGroup]="reviewForm">
+  <p-tabView class="review-tabview" [activeIndex]="activeIndex">
+    <p-tabPanel>
+      <app-exercise-one [math]="selectedMath[0]" [parentFormGroup]="reviewForm" [control]="'q1'" (nextStepEmitter)="nextStep($event)"></app-exercise-one>
+    </p-tabPanel>
+    <p-tabPanel>
+      <app-exercise-two [math]="selectedMath[1]" [parentFormGroup]="reviewForm" [control]="'q2'" (nextStepEmitter)="nextStep($event)"></app-exercise-two>
+    </p-tabPanel>
+    <p-tabPanel>
+      <app-exercise-three [math]="selectedMath[2]" [parentFormGroup]="reviewForm" [control]="'q3'" (nextStepEmitter)="nextStep($event)"></app-exercise-three>
+    </p-tabPanel>
+    <p-tabPanel>
+      <app-exercise-three [math]="selectedMath[3]" [parentFormGroup]="reviewForm" [control]="'q4'" (nextStepEmitter)="nextStep($event)"></app-exercise-three>
+    </p-tabPanel>
+    <p-tabPanel>
+      <app-exercise-four [math]="selectedMath[4]" [parentFormGroup]="reviewForm" [control]="'q5'" (nextStepEmitter)="nextStep($event)"></app-exercise-four>
+    </p-tabPanel>
+    <p-tabPanel>
+      <app-exercise-four [math]="selectedMath[5]" [parentFormGroup]="reviewForm" [control]="'q6'" (nextStepEmitter)="nextStep($event)"></app-exercise-four>
+    </p-tabPanel>
+    <p-tabPanel>
+      <app-result></app-result>
+    </p-tabPanel>
+  </p-tabView>
+
+<!--  <button class="btn btn-primary" (click)="nextStep($event)">Next</button>-->
+</div>
+
+

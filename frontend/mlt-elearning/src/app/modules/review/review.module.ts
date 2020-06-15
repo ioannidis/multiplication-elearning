@@ -6,6 +6,12 @@ import { ExerciseThreeComponent } from './exercise-three/exercise-three.componen
 import { ExerciseFourComponent } from './exercise-four/exercise-four.component';
 import { MiniReviewComponent } from './mini-review/mini-review.component';
 import { FinalReviewComponent } from './final-review/final-review.component';
+import {TabViewModule} from 'primeng/tabview';
+import {ButtonModule, StepsModule} from "primeng";
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {ReactiveFormsModule} from "@angular/forms";
+import { ResultComponent } from './result/result.component';
+
 
 
 
@@ -16,10 +22,16 @@ import { FinalReviewComponent } from './final-review/final-review.component';
     ExerciseThreeComponent,
     ExerciseFourComponent,
     MiniReviewComponent,
-    FinalReviewComponent
+    FinalReviewComponent,
+    ResultComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    TabViewModule,
+    StepsModule,
+    SelectButtonModule,
+    ButtonModule
   ],
   exports: [
     MiniReviewComponent,

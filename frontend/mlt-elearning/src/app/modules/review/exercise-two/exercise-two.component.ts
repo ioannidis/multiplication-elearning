@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-exercise-two',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExerciseTwoComponent implements OnInit {
 
+  @Input() math: number[];
+  @Input() parentFormGroup: FormGroup;
+  @Input() control: string;
+  @Output() nextStepEmitter: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  nextStep() {
+    this.nextStepEmitter.emit({value: 1});
+  }
+
+  isControlInvalid() {
+    return this.parentFormGroup.get(this.control).invalid;
+  }
 }

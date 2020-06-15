@@ -1,1 +1,11 @@
-<p>exercise-three works!</p>
+<div class="math mb-2" [formGroup]="parentFormGroup">
+  <span>{{math[0]}} x {{math[1]}} = </span><span><input type="number" [formControlName]="control" /></span>
+</div>
+<button pButton
+        class="ui-button"
+        type="button"
+        label="Next"
+        icon="pi pi-angle-right"
+        iconPos="right"
+        [disabled]="isControlInvalid()"
+        (click)="nextStep()"></button>
