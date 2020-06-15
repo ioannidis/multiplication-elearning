@@ -16,8 +16,9 @@ export class LessonsShowComponent implements OnInit {
   public lesson: any;
 
   public isReviewActive: boolean = true;
-  public questions: any
-  public activeIndex: number = 0;
+  // public questions: any
+  // public activeIndex: number = 0;
+  public actualNumber: number = 0;
 
   constructor(private lessonService: LessonService,
               private activatedRoute: ActivatedRoute,
@@ -25,40 +26,44 @@ export class LessonsShowComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.questions = [
-      {
-        label: 'Question 1',
-        command: (event: any) => {
-          this.activeIndex = 0;
-        }
-      },
-      {
-        label: 'Question 2',
-        command: (event: any) => {
-          this.activeIndex = 1;
-        }
-      },
-      {
-        label: 'Question 3',
-        command: (event: any) => {
-          this.activeIndex = 2;
-        }
-      },
-      {
-        label: 'Question 4',
-        command: (event: any) => {
-          this.activeIndex = 3;
-        }
-      },
-      {
-        label: 'Question 5',
-        command: (event: any) => {
-          this.activeIndex = 4;
-        }
-      },
-    ];
+    // this.questions = [
+    //   {
+    //     label: 'Question 1',
+    //     command: (event: any) => {
+    //       this.activeIndex = 0;
+    //     }
+    //   },
+    //   {
+    //     label: 'Question 2',
+    //     command: (event: any) => {
+    //       this.activeIndex = 1;
+    //     }
+    //   },
+    //   {
+    //     label: 'Question 3',
+    //     command: (event: any) => {
+    //       this.activeIndex = 2;
+    //     }
+    //   },
+    //   {
+    //     label: 'Question 4',
+    //     command: (event: any) => {
+    //       this.activeIndex = 3;
+    //     }
+    //   },
+    //   {
+    //     label: 'Question 5',
+    //     command: (event: any) => {
+    //       this.activeIndex = 4;
+    //     }
+    //   },
+    // ];
 
     const lessonId = this.activatedRoute.snapshot.params['url'];
+
+    if (lessonId.includes('number')) {
+      this.actualNumber = lessonId.split('-')[1];
+    }
 
     this.lessonService.findOne(lessonId)
       .subscribe(res => {
@@ -66,9 +71,9 @@ export class LessonsShowComponent implements OnInit {
       })
   }
 
-  nextStep() {
-    this.activeIndex++;
-  }
+  // nextStep() {
+  //   this.activeIndex++;
+  // }
 
 
 }

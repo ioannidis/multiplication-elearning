@@ -14,11 +14,11 @@
       </p-tabPanel>
       <p-tabPanel header="Mini Review" [disabled]="!isReviewActive">
 
-        <p-steps class="review-steps" [model]="questions" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+<!--        <p-steps class="review-steps" [model]="questions" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>-->
 
-        <app-mini-review [numberOfExercises]="5"></app-mini-review>
+        <app-mini-review [numberOfExercises]="5" [forNumber]="actualNumber"></app-mini-review>
 
-        <button class="btn btn-primary" (click)="nextStep()">Next</button>
+<!--        <button class="btn btn-primary" (click)="nextStep()">Next</button>-->
 
       </p-tabPanel>
     </p-tabView>
