@@ -5,12 +5,16 @@ import { ExerciseTwoComponent } from './exercise-two/exercise-two.component';
 import { ExerciseThreeComponent } from './exercise-three/exercise-three.component';
 import { ExerciseFourComponent } from './exercise-four/exercise-four.component';
 import { MiniReviewComponent } from './mini-review/mini-review.component';
-import { FinalReviewComponent } from './final-review/final-review.component';
 import {TabViewModule} from 'primeng/tabview';
 import {ButtonModule, StepsModule} from "primeng";
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ResultComponent } from './result/result.component';
+import { ReviewComponent } from './review/review.component';
+import {LayoutModule} from "../../shared/layout/layout.module";
+import { ReviewShowComponent } from './review-show/review-show.component';
+import {ReviewRoutingModule} from "./review-routing.module";
+import { FinalReviewComponent } from './final-review/final-review.component';
 
 
 
@@ -22,20 +26,23 @@ import { ResultComponent } from './result/result.component';
     ExerciseThreeComponent,
     ExerciseFourComponent,
     MiniReviewComponent,
-    FinalReviewComponent,
-    ResultComponent
+    ResultComponent,
+    ReviewComponent,
+    ReviewShowComponent,
+    FinalReviewComponent
   ],
   imports: [
     CommonModule,
+    ReviewRoutingModule,
     ReactiveFormsModule,
+    LayoutModule,
     TabViewModule,
     StepsModule,
     SelectButtonModule,
     ButtonModule
   ],
   exports: [
-    MiniReviewComponent,
-    FinalReviewComponent
+    MiniReviewComponent
   ],
 })
 export class ReviewModule { }
