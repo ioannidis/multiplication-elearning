@@ -15,6 +15,10 @@ export class AchievementService {
               private currentUserService: CurrentUserService) { }
 
   find(): Observable<any> {
-    return this.http.get(this.BASE_URL + `/users/${this.currentUserService.getUsername()}/achievements`);
+    return this.http.get(`${this.BASE_URL}/users/${this.currentUserService.getUsername()}/achievements`);
+  }
+
+  save(achievement): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/users/${this.currentUserService.getUsername()}/achievements`, achievement);
   }
 }

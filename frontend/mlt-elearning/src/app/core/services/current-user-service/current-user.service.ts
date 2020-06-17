@@ -28,7 +28,7 @@ export class CurrentUserService {
 
   public getRoles(): string[] {
     this.syncDetails();
-    return this.details.roles;
+    return this.details.role;
   }
 
   public getCurrentUser(): any {
@@ -36,9 +36,10 @@ export class CurrentUserService {
     return this.details;
   }
 
-  public hasCurrentUserPrivileges(roles: string[]): boolean {
+  public hasCurrentUserPrivileges(role: string[]): boolean {
     this.syncDetails();
-    return this.details.roles.some(x => roles.includes(x));
+    return this.details.role === role;
+    // return this.details.role.some(x => role.includes(x));
   }
 
   private syncDetails() {
