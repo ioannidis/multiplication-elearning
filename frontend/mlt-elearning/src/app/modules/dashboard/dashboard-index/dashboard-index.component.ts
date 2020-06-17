@@ -78,7 +78,10 @@ export class DashboardIndexComponent implements OnInit {
   }
 
   openLink(path) {
-    this.router.navigate(['lessons', path])
+    if (path.includes("number"))
+      this.router.navigate(['lessons', path])
+    else
+      this.router.navigate(['reviews', path])
   }
 
 }
