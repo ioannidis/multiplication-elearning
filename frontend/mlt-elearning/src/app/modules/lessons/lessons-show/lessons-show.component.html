@@ -16,7 +16,7 @@
 
 <!--        <p-steps class="review-steps" [model]="questions" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>-->
 
-        <app-mini-review [numberOfExercises]="5" [forNumber]="actualNumber"></app-mini-review>
+        <app-mini-review [lessonId]="lesson?._id" [numberOfExercises]="5" [forNumber]="actualNumber"></app-mini-review>
 
 <!--        <button class="btn btn-primary" (click)="nextStep()">Next</button>-->
 
