@@ -28,7 +28,7 @@ export class DashboardIndexComponent implements OnInit {
       this.achievementService.find()
     ]).subscribe(res => {
       this.lessons = res[0].lessons;
-      this.achievements = res[1].achievements[0].lessons;
+      this.achievements = res[1].achievements[0]?.lessons || {};
 
       this.nextLesson = Object.keys(this.achievements).length+1;
       this.calcLessonSucceed();
@@ -52,11 +52,19 @@ export class DashboardIndexComponent implements OnInit {
     }
   }
 
+  getLessonScore(lessonId) {
+    if (this.achievements.hasOwnProperty(lessonId))
+      return this.achievements[lessonId].percentage;
+    return "-"
+  }
+
   calcLessonSucceed() {
     for (let lesson in this.achievements) {
-      if (this.achievements[lesson].percentage < 75) {
-        this.isAllLessonSucceed = false;
-        return
+      if (this.achievements.hasOwnProperty(lesson)) {
+        if (this.achievements[lesson].percentage < 75) {
+          this.isAllLessonSucceed = false;
+          return
+        }
       }
     }
   }

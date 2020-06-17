@@ -23,7 +23,7 @@
               <h4 class="font-weight-bold text-uppercase mb-1"
                   [ngClass]="'text-'+getLessonStatus(lesson._id, lesson.order)">{{lesson.title}}</h4>
               <div class="text-xs font-weight-bold text-uppercase mb-1"
-                   [ngClass]="'text-'+getLessonStatus(lesson._id, lesson.order)">{{achievements[lesson._id]?.percentage}}</div>
+                   [ngClass]="'text-'+getLessonStatus(lesson._id, lesson.order)">{{getLessonScore(lesson._id)}}</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-calendar fa-2x text-gray-300"></i>
