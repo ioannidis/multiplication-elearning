@@ -41,15 +41,3 @@ router.post('/', [accessMiddleware.hasAccess(['teacher'])], async (req, res, nex
 
 
 module.exports = router;
-
-// {
-//     "_id" : ObjectId("5eea23efedbb8d0c114e6676"),
-//     "username" : "klanos",
-//     "lessons" : {
-//     "5eccfcaef889be419e7d3a35" : {
-//         "lessonId" : "5eccfcaef889be419e7d3a35",
-//             "percentage" : 33
-//     }
-// },
-//     "__v" : 0
-// }
