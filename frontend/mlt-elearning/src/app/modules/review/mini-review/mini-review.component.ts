@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MultiplicationService} from "../../../core/services/multiplication-service/multiplication.service";
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
+import {AchievementService} from "../../../core/services/achievement-service/achievement.service";
+import {$e} from "codelyzer/angular/styles/chars";
 
 @Component({
   selector: 'app-mini-review',
@@ -9,6 +11,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 })
 export class MiniReviewComponent implements OnInit {
 
+  @Input() lessonId: String;
   @Input() numberOfExercises: number;
   @Input() forNumber: number;
 
@@ -24,6 +27,7 @@ export class MiniReviewComponent implements OnInit {
   public score: number = 0;
 
   constructor(private multiplicationService: MultiplicationService,
+              private achievementService: AchievementService,
               private formBuilder: FormBuilder) {
 
     this.reviewForm = this.formBuilder.group(
@@ -86,7 +90,6 @@ export class MiniReviewComponent implements OnInit {
 
     this.multiplicationService.getMultiplication(this.forNumber)
       .subscribe(res => {
-        console.log(res);
         this.multiplication = res;
 
         this.selectedMath = [
@@ -116,37 +119,27 @@ export class MiniReviewComponent implements OnInit {
   }
 
   nextStep($event) {
+    const index = parseInt($event.control.substring(1));
+
+    if (Array.isArray(this.reviewForm.value[$event.control])) {
+      this.result.push($event.selectedMath[2] === this.reviewForm.value[$event.control][2])
+    } else {
+      this.result.push(this.selectedMath[index - 1][$event.exerciseType - 1] === this.reviewForm.value[$event.control])
+    }
+
+
     this.activeIndex++;
-    console.log(this.activeIndex)
-    console.log(this.reviewForm)
     if (this.activeIndex === this.selectedMath.length) {
-
-      let index = 0;
-      for (const property in this.reviewForm.value) {
-        if (Array.isArray(this.reviewForm.value[property])) {
-          console.log(this.reviewForm.value[property])
-          console.log(this.selectedMath[index][2])
-          console.log(this.reviewForm.value[property][2])
-          this.result.push(this.selectedMath[index][2] === this.reviewForm.value[property][2])
-        } else {
-          // TODO need the correct pos
-          console.log(this.selectedMath[index][2])
-          console.log(this.reviewForm.value[property])
-          this.result.push(this.selectedMath[index][2] === this.reviewForm.value[property])
-        }
-        index++;
-      }
-
       let successful = 0;
       this.result.forEach(r => {
-        console.log(r)
         if (r)
           successful++;
       });
       this.score = +((successful / this.result.length) * 100).toFixed();
-      console.log(this.result);
-      console.log(this.score);
 
+      this.achievementService.save({lessonId: this.lessonId, percentage: this.score })
+        .subscribe(res => console.log(res),
+          error => console.log(error));
     }
   }
 

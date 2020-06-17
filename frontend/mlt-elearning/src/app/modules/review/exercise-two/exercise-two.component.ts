@@ -19,7 +19,11 @@ export class ExerciseTwoComponent implements OnInit {
   }
 
   nextStep() {
-    this.nextStepEmitter.emit({value: 1});
+    this.nextStepEmitter.emit({
+      advanceIndexValue: 1,
+      exerciseType: 2,
+      control: this.control
+    });
   }
 
   isControlInvalid() {

@@ -33,7 +33,12 @@ export class ExerciseFourComponent implements OnInit {
   }
 
   nextStep() {
-    this.nextStepEmitter.emit({value: 1});
+    this.nextStepEmitter.emit({
+      advanceIndexValue: 1,
+      exerciseType: 4,
+      control: this.control,
+      selectedMath: this.selected
+    });
   }
 
   isControlInvalid() {

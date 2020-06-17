@@ -23,7 +23,11 @@ export class ExerciseOneComponent implements OnInit {
   }
 
   nextStep() {
-    this.nextStepEmitter.emit({value: 1});
+    this.nextStepEmitter.emit({
+      advanceIndexValue: 1,
+      exerciseType: 1,
+      control: this.control
+    });
   }
 
   isControlInvalid() {
