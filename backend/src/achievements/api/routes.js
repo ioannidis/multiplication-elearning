@@ -22,11 +22,17 @@ router.post('/', [accessMiddleware.hasAccess(['teacher'])], async (req, res, nex
     try {
         const achievements = await achievementService.findOne({username: req.username});
 
-        if (!achievements.lessons[req.body.lessonId] || achievements.lessons[req.body.lessonId].percentage < req.body.percentage) {
+        if (!achievements) {
+            await achievementService.save({
+                username: req.username,
+                lessons: {
+                    [req.body.lessonId]: req.body
+                }
+            });
+        } else if (!achievements.lessons[req.body.lessonId] || achievements.lessons[req.body.lessonId].percentage < req.body.percentage) {
             await achievementService.findOneAndUpdate({username: req.username}, req.body);
         }
-
-        return res.sendStatus(200);
+        return res.status(200).json({});
 
     } catch (err) {
         return res.status(500).json({error: err});
@@ -35,3 +41,15 @@ router.post('/', [accessMiddleware.hasAccess(['teacher'])], async (req, res, nex
 
 
 module.exports = router;
+
+// {
+//     "_id" : ObjectId("5eea23efedbb8d0c114e6676"),
+//     "username" : "klanos",
+//     "lessons" : {
+//     "5eccfcaef889be419e7d3a35" : {
+//         "lessonId" : "5eccfcaef889be419e7d3a35",
+//             "percentage" : 33
+//     }
+// },
+//     "__v" : 0
+// }

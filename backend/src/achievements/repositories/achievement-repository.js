@@ -33,7 +33,7 @@ const findOneAndUpdate = async (filter, data) => {
 const save = async (data) => {
     try {
         const user = new Achievement(data);
-        user.save();
+        await user.save();
         return {data: {user}};
     } catch (err) {
         return err;
