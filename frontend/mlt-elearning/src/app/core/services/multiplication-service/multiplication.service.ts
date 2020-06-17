@@ -34,4 +34,13 @@ export class MultiplicationService {
   getMultiplication(num: number): Observable<any> {
     return from([this.multiplication[num]]);
   }
+
+  getMultiplicationInRange(begin, end): Observable<any> {
+    const payload = [];
+    for (let i = begin; i <= end; i++) {
+      payload.push(this.multiplication[i])
+    }
+
+    return from([payload]);
+  }
 }
