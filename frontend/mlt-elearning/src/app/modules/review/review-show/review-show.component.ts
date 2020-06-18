@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MultiplicationService} from "../../../core/services/multiplication-service/multiplication.service";
 import {AchievementService} from "../../../core/services/achievement-service/achievement.service";
 import {ActivatedRoute} from "@angular/router";
+import {LessonService} from "../../../core/services/lesson-service/lesson.service";
 
 @Component({
   selector: 'app-review-show',
@@ -11,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ReviewShowComponent implements OnInit {
 
-  @Input() lessonId: String = "1";
+  lessonId: String;
   numberOfExercises: number = 12;
   forNumbers: number[];
 
@@ -27,6 +28,7 @@ export class ReviewShowComponent implements OnInit {
   public score: number = 0;
 
   constructor(private multiplicationService: MultiplicationService,
+              private lessonService: LessonService,
               private achievementService: AchievementService,
               private formBuilder: FormBuilder,
               private activatedRoute: ActivatedRoute) {
@@ -50,6 +52,12 @@ export class ReviewShowComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.lessonService.findOne(this.activatedRoute.snapshot.params['url'])
+      .subscribe(res => {
+        this.lessonId = res.lesson._id
+      });
+
     this.questions = [
       {
         label: 'Question 1',
@@ -188,10 +196,9 @@ export class ReviewShowComponent implements OnInit {
       });
       this.score = +((successful / this.result.length) * 100).toFixed();
 
-      console.log({lessonId: this.lessonId, percentage: this.score });
-      // this.achievementService.save({lessonId: this.lessonId, percentage: this.score })
-      //   .subscribe(res => console.log(res),
-      //     error => console.log(error));
+      this.achievementService.save({lessonId: this.lessonId, percentage: this.score })
+        .subscribe(res => console.log(res),
+          error => console.log(error));
     }
   }
 
