@@ -7,3 +7,7 @@
 .review-tabview .ui-tabview-nav {
   display: none;
 }
+
+img.grayscale {
+  filter: grayscale(100%);
+}

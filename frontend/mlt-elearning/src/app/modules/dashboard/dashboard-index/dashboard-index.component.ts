@@ -54,7 +54,7 @@ export class DashboardIndexComponent implements OnInit {
 
   getLessonScore(lessonId) {
     if (this.achievements.hasOwnProperty(lessonId))
-      return this.achievements[lessonId].percentage;
+      return this.achievements[lessonId].percentage + "%";
     return "-"
   }
 
