@@ -26,8 +26,18 @@ const save = async (data) => {
     }
 };
 
+const findOneAndUpdate = async (data) => {
+    try {
+        data.password = bcrypt.hashSync(data.password, 10)
+        return await userRepository.findOneAndUpdate(data);
+    } catch (err) {
+        return err;
+    }
+};
+
 module.exports = {
     find,
     findOne,
+    findOneAndUpdate,
     save
 };
