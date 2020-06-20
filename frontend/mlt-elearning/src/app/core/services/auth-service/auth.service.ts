@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -64,7 +64,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('current_user');
 
-    return this.http.get(this.LOGOUT_URL);
+    return of(null);
   }
 
   public signUp(payload: any): Observable<any> {
