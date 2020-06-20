@@ -5,7 +5,23 @@
 }
 
 .review-tabview .ui-tabview-nav {
-  display: none;
+display: none;
+}
+
+.review-tabview .ui-tabview-panels {
+  max-width: 550px;
+  text-align: center;
+  margin: auto;
+}
+
+.review-tabview .ui-tabview-panel {
+  font-family: 'Balsamiq Sans', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 20px;
+}
+
+.review-tabview p-selectButton .ui-button {
+  font-family: 'Balsamiq Sans', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 20px;
 }
 
 img.grayscale {

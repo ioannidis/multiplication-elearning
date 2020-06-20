@@ -132,19 +132,18 @@
 <!--    </li>-->
 
     <!-- Nav Item - User Information -->
-    <li class="nav-item dropdown no-arrow">
+    <li *ngIf="currentUser" class="nav-item dropdown no-arrow">
       <a class="nav-link" [routerLink]="['/users', currentUser?.id]" id="user" role="button">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{currentUser?.firstName}} {{currentUser?.lastName}}</span>
         <!--        <img class="img-profile rounded-circle" src="#">-->
       </a>
     </li>
 
-    <div class="topbar-divider d-none d-sm-block"></div>
+    <div *ngIf="currentUser" class="topbar-divider d-none d-sm-block"></div>
 
-    <li class="nav-item dropdown no-arrow">
+    <li *ngIf="currentUser" class="nav-item dropdown no-arrow">
       <a class="nav-link" [routerLink]="['/auth', 'logout']" id="logout" role="button">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
-<!--        <img class="img-profile rounded-circle" src="#">-->
       </a>
       <!-- Dropdown - User Information -->
 <!--      <div class="dropdown-menu dropdown-menu-right shadow animated&#45;&#45;grow-in" aria-labelledby="userDropdown">-->
