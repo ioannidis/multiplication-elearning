@@ -12,9 +12,10 @@ import {LessonService} from "../../../core/services/lesson-service/lesson.servic
 })
 export class ReviewShowComponent implements OnInit {
 
-  lessonId: String;
-  numberOfExercises: number = 12;
-  forNumbers: number[];
+  public reviewTitle: String;
+  public lessonId: String;
+  public numberOfExercises: number = 12;
+  public forNumbers: number[];
 
   public questions: any[];
   public activeIndex = 0;
@@ -52,6 +53,9 @@ export class ReviewShowComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const title = this.activatedRoute.snapshot.params['url'].split('-').join(' ');
+    this.reviewTitle = title.charAt(0).toUpperCase() + title.slice(1);
 
     this.lessonService.findOne(this.activatedRoute.snapshot.params['url'])
       .subscribe(res => {

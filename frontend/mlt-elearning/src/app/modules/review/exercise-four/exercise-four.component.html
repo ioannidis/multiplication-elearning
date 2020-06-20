@@ -1,10 +1,10 @@
-<div class="math mb-2" [formGroup]="parentFormGroup">
-  <p>Which multiplication gives the following result?</p>
+<div class="math mt-2 mb-3" [formGroup]="parentFormGroup">
+  <p class="mb-1">Which multiplication gives the following result?</p>
   <h1>{{selected[2]}}</h1>
   <p-selectButton [options]="options" [formControlName]="control"></p-selectButton>
 </div>
 <button pButton
-        class="ui-button"
+        class="ui-button mb-1"
         type="button"
         label="Next"
         icon="pi pi-angle-right"
