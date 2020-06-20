@@ -1,18 +1,29 @@
-<div class="container">
+<div id="wrapper">
 
-  <!-- Outer Row -->
-  <div class="row justify-content-center">
+  <div id="content-wrapper">
 
-    <div class="col-xl-10 col-lg-12 col-md-9">
+    <app-header></app-header>
 
-      <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="layout-main">
 
-        <router-outlet></router-outlet>
+      <div class="p-grid mb-5">
+
+        <div class="p-col-8">
+          <p>Tha mathoume tin propaideia mpastardakia!</p>
+        </div>
+
+        <div class="p-col-4">
+          <router-outlet></router-outlet>
+        </div>
 
       </div>
 
+      <app-footer></app-footer>
+
+      <div class="layout-main-mask"></div>
     </div>
 
   </div>
 
 </div>
+

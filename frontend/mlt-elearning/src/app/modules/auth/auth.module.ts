@@ -10,6 +10,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthComponent } from './auth/auth.component';
 import { ButtonModule, InputTextModule, MessageModule, PasswordModule } from 'primeng';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
+import {LayoutModule} from "../../shared/layout/layout.module";
 
 
 
@@ -31,10 +32,12 @@ import { PasswordUpdateComponent } from './password-update/password-update.compo
     InputTextModule,
     PasswordModule,
     ButtonModule,
-    MessageModule
+    MessageModule,
+    LayoutModule
   ],
   exports: [
     LoginComponent,
+    LogoutComponent,
     SignupComponent,
     PasswordResetComponent
   ]

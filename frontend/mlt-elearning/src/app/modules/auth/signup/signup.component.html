@@ -2,117 +2,121 @@
 <div class="row">
   <div class="col-md-12">
     <div class="p-5">
-      <div class="text-center">
-        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-      </div>
-      <form class="user" (ngSubmit)="onSubmit()" [formGroup]="form">
 
-        <!-- Username -->
-        <div class="form-group">
-          <input id="username" type="text" class="w-100" name="username" placeholder="Username"
-                 [ngClass]="{'is-invalid': form.get('username').invalid}"
-                 pInputText
-                 formControlName="username"/>
-          <div *ngIf="(form.get('username').dirty ||
+      <div class="card p-5">
+        <div class="text-center">
+          <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+        </div>
+        <form class="user" (ngSubmit)="onSubmit()" [formGroup]="form">
+
+          <!-- Username -->
+          <div class="form-group">
+            <input id="username" type="text" class="w-100" name="username" placeholder="Username"
+                   [ngClass]="{'is-invalid': form.get('username').invalid}"
+                   pInputText
+                   formControlName="username"/>
+            <div *ngIf="(form.get('username').dirty ||
             form.get('username').touched) &&
             form.get('username').getError('required')" class="invalid-feedback">
-            Username is required.
-          </div>
-          <div *ngIf="(form.get('username').dirty ||
+              Username is required.
+            </div>
+            <div *ngIf="(form.get('username').dirty ||
             form.get('username').touched) &&
             form.get('username').getError('invalidField')" class="invalid-feedback">
-            This username address is already in use.
+              This username address is already in use.
+            </div>
           </div>
-        </div>
 
-        <!-- Email -->
-        <div class="form-group">
-          <input id="email" type="text" class="w-100" name="email" placeholder="Email"
-                 [ngClass]="{'is-invalid': form.get('email').invalid}"
-                 pInputText
-                 formControlName="email"/>
-          <div *ngIf="(form.get('email').dirty ||
+          <!-- Email -->
+          <div class="form-group">
+            <input id="email" type="text" class="w-100" name="email" placeholder="Email"
+                   [ngClass]="{'is-invalid': form.get('email').invalid}"
+                   pInputText
+                   formControlName="email"/>
+            <div *ngIf="(form.get('email').dirty ||
             form.get('email').touched) &&
             form.get('email').getError('required')" class="invalid-feedback">
-            Email is required.
-          </div>
-          <div *ngIf="(form.get('email').dirty ||
+              Email is required.
+            </div>
+            <div *ngIf="(form.get('email').dirty ||
             form.get('email').touched) &&
             form.get('email').getError('invalidField')" class="invalid-feedback">
-            This email address is already in use.
+              This email address is already in use.
+            </div>
           </div>
-        </div>
 
-        <!-- Password -->
-        <div class="form-group row">
-          <div class="col-sm-6 mb-3 mb-sm-0">
-            <input id="password" class="w-100" type="password" name="password" placeholder="Password"
-                   [ngClass]="{
+          <!-- Password -->
+          <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <input id="password" class="w-100" type="password" name="password" placeholder="Password"
+                     [ngClass]="{
                    'is-invalid': form.getError('invalidMatchingPassword') || form.get('password').getError('minlength'),
                    'ng-invalid': form.getError('invalidMatchingPassword') || form.get('password').getError('minlength')
                    }"
-                   pInputText
-                   formControlName="password" />
-            <div *ngIf="(form.get('password').dirty ||
+                     pInputText
+                     formControlName="password" />
+              <div *ngIf="(form.get('password').dirty ||
             form.get('password').touched) &&
             form.getError('invalidMatchingPassword')" class="invalid-feedback">
-              Passwords does not match.
-            </div>
-            <div *ngIf="(form.get('password').dirty ||
+                Passwords does not match.
+              </div>
+              <div *ngIf="(form.get('password').dirty ||
             form.get('password').touched) &&
             form.get('password').getError('minlength')" class="invalid-feedback">
-              Password length should be greater than {{form.get('password').getError('minlength').requiredLength}}.
+                Password length should be greater than {{form.get('password').getError('minlength').requiredLength}}.
+              </div>
             </div>
-          </div>
 
-          <!-- Password Confirm -->
-          <div class="col-sm-6">
-            <input id="password-confirm" class="w-100" type="password" name="password-confirm" placeholder="Confirm password"
-                   [ngClass]="{
+            <!-- Password Confirm -->
+            <div class="col-sm-6">
+              <input id="password-confirm" class="w-100" type="password" name="password-confirm" placeholder="Confirm password"
+                     [ngClass]="{
                    'is-invalid': form.getError('invalidMatchingPassword') || form.get('confirmPassword').getError('minlength'),
                    'ng-invalid': form.getError('invalidMatchingPassword') || form.get('confirmPassword').getError('minlength')
                    }"
-                   pInputText
-                   formControlName="confirmPassword" />
-            <div *ngIf="(form.get('confirmPassword').dirty ||
+                     pInputText
+                     formControlName="confirmPassword" />
+              <div *ngIf="(form.get('confirmPassword').dirty ||
             form.get('confirmPassword').touched) &&
             form.get('confirmPassword').getError('minlength')" class="invalid-feedback">
-              Password length should be greater than {{form.get('confirmPassword').getError('minlength').requiredLength}}.
+                Password length should be greater than {{form.get('confirmPassword').getError('minlength').requiredLength}}.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Firstname -->
-        <div class="form-group">
-          <input id="firstName" type="text" class="w-100" name="firstName" placeholder="First name"
-                 [ngClass]="{'is-invalid': form.get('firstName').invalid}"
-                 pInputText
-                 formControlName="firstName"/>
-          <div *ngIf="(form.get('firstName').dirty ||
+          <!-- Firstname -->
+          <div class="form-group">
+            <input id="firstName" type="text" class="w-100" name="firstName" placeholder="First name"
+                   [ngClass]="{'is-invalid': form.get('firstName').invalid}"
+                   pInputText
+                   formControlName="firstName"/>
+            <div *ngIf="(form.get('firstName').dirty ||
             form.get('firstName').touched) &&
             form.get('firstName').getError('required')" class="invalid-feedback">
-            First name is required.
+              First name is required.
+            </div>
           </div>
-        </div>
 
-        <!-- Firstname -->
-        <div class="form-group">
-          <input id="lastName" type="text" class="w-100" name="lastName" placeholder="Last name"
-                 [ngClass]="{'is-invalid': form.get('lastName').invalid}"
-                 pInputText
-                 formControlName="lastName"/>
-        </div>
+          <!-- Firstname -->
+          <div class="form-group">
+            <input id="lastName" type="text" class="w-100" name="lastName" placeholder="Last name"
+                   [ngClass]="{'is-invalid': form.get('lastName').invalid}"
+                   pInputText
+                   formControlName="lastName"/>
+          </div>
 
-        <button pButton type="submit" label="Register Account" class="ui-button-primary w-100"
-                [disabled]="form.invalid || isSubmitted"></button>
-      </form>
-      <hr>
-      <div class="text-center">
-        <a class="small" (click)="switchForm(3)">Forgot Password?</a>
+          <button pButton type="submit" label="Register Account" class="ui-button-primary w-100"
+                  [disabled]="form.invalid || isSubmitted"></button>
+        </form>
+        <hr>
+        <div class="text-center">
+          <a class="small" [routerLink]="['/auth', 'passwordreset']">Forgot Password?</a>
+        </div>
+        <div class="text-center">
+          <a class="small" [routerLink]="['/auth', 'login']">Already have an account? Login!</a>
+        </div>
       </div>
-      <div class="text-center">
-        <a class="small" (click)="switchForm(1)">Already have an account? Login!</a>
-      </div>
+
     </div>
   </div>
 </div>

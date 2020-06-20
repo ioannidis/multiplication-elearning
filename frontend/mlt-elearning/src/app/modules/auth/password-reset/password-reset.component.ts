@@ -39,7 +39,7 @@ export class PasswordResetComponent implements OnInit {
     this.isSubmitted = true;
     this.authService.passwordReset(this.form.value)
       .subscribe(x => {
-        this.router.navigate(['']);
+        this.router.navigate(['/auth', 'login']);
       },
       error => {
         this.isSubmitted = false;
