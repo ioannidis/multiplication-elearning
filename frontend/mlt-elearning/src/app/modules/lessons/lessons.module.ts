@@ -7,6 +7,7 @@ import {LayoutModule} from "../../shared/layout/layout.module";
 import {TabViewModule} from 'primeng/tabview';
 import {StepsModule} from 'primeng/steps';
 import {ReviewModule} from "../review/review.module";
+import {ButtonModule} from "primeng";
 
 
 
@@ -15,13 +16,14 @@ import {ReviewModule} from "../review/review.module";
     LessonsComponent,
     LessonsShowComponent
   ],
-  imports: [
-    CommonModule,
-    LessonsRoutingModule,
-    LayoutModule,
-    ReviewModule,
-    TabViewModule,
-    StepsModule
-  ]
+    imports: [
+        CommonModule,
+        LessonsRoutingModule,
+        LayoutModule,
+        ReviewModule,
+        TabViewModule,
+        StepsModule,
+        ButtonModule
+    ]
 })
 export class LessonsModule { }
