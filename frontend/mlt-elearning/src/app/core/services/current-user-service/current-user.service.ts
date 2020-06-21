@@ -38,7 +38,7 @@ export class CurrentUserService {
 
   public hasCurrentUserPrivileges(role: string[]): boolean {
     this.syncDetails();
-    return this.details.role === role;
+    return this.details.role === role[0];
     // return this.details.role.some(x => role.includes(x));
   }
 
