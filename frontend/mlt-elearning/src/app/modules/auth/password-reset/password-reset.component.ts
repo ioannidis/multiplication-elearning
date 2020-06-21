@@ -19,7 +19,7 @@ export class PasswordResetComponent implements OnInit {
               private formBuilder: FormBuilder,
               private router: Router) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@gmail\.[a-z]{2,4}$')]]
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]]
     });
   }
 

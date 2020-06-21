@@ -28,7 +28,6 @@ export class PasswordUpdateComponent implements OnInit {
     this.activatedRoute.paramMap
       .subscribe(x => {
         this.passwordResetId = x.get('id')
-        console.log(x.get('id'));
       });
   }
 
@@ -36,7 +35,6 @@ export class PasswordUpdateComponent implements OnInit {
     console.log(this.form);
     this.authService.passwordUpdate(this.form.value, this.passwordResetId)
       .subscribe(x => {
-        console.log(x);
         this.router.navigate(['/auth', 'login']);
       });
   }

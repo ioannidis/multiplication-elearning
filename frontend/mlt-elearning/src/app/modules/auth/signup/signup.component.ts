@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
               private router: Router) {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@gmail\.[a-z]{2,4}$')]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       firstName: ['', [Validators.required]],
       lastName: [''],
       role: ['student', [Validators.required]],
@@ -48,6 +48,7 @@ export class SignupComponent implements OnInit {
     this.authService.signUp(this.form.value)
       .subscribe(x => {
         this.formType.emit({formType: 1})
+        this.router.navigate(['/auth', 'login'])
       },
         error => {
         this.isSubmitted = false;
