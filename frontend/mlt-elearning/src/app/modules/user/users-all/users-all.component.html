@@ -1,0 +1,114 @@
+<div class="card">
+
+  <p-table [value]="users">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button pButton type="button" class="ui-button-secondary mr-1" label="Details" icon="pi pi-eye" (click)="detailsDialog(user.username)"></button>
+          <button pButton type="button" class="ui-button-warning mr-1" label="Edit" icon="pi pi-pencil" (click)="editDialog(user)" ></button>
+          <button pButton type="button" class="ui-button-danger mr-1" label="Delete" icon="pi pi-trash"  (click)="deleteUser(user)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+
+</div>
+
+
+<p-dialog *ngIf="userAchievement"  [(visible)]="displayDetails" [modal]="true" [style]="{width: '40vw'}">
+  <p-header>
+    User details
+  </p-header>
+  <p-table [value]="lessons">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Lessons / Reviews</th>
+        <th>Score</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-lesson>
+      <tr>
+        <td>{{lesson.title}}</td>
+        <td [ngClass]="{
+            'text-danger' : (userAchievement[lesson?._id]?.percentage < 75),
+            'text-warning' : (userAchievement[lesson?._id]?.percentage < 95 && userAchievement[lesson?._id]?.percentage >= 75),
+            'text-success' : (userAchievement[lesson?._id]?.percentage >= 95)
+          }">{{userAchievement[lesson?._id]?.percentage || '-'}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary mr-1" label="Close" (click)="closeDialog()"></button>
+  </p-footer>
+</p-dialog>
+
+<p-dialog *ngIf="displayEdit" header="Title"[(visible)]="displayEdit" [modal]="true" [style]="{width: '40vw'}">
+  <p-header>
+    Edit user
+  </p-header>
+  <form (ngSubmit)="updateUser()" [formGroup]="userForm">
+    <input type="hidden" formControlName="_id" />
+    <input type="hidden" formControlName="username" />
+    <!-- Email -->
+    <div class="form-group">
+      <input id="email" type="text" class="w-100" name="email" placeholder="Email"
+             [ngClass]="{'is-invalid': userForm.get('email').invalid}"
+             pInputText
+             formControlName="email"/>
+      <div *ngIf="(userForm.get('email').dirty ||
+              userForm.get('email').touched) &&
+              userForm.get('email').getError('required')" class="invalid-feedback">
+        Email is required.
+      </div>
+      <div *ngIf="(userForm.get('email').dirty ||
+              userForm.get('email').touched) &&
+              userForm.get('email').getError('invalidField')" class="invalid-feedback">
+        This email address is already in use.
+      </div>
+    </div>
+
+    <!-- Firstname -->
+    <div class="form-group">
+      <input id="firstName" type="text" class="w-100" name="firstName" placeholder="First name"
+             [ngClass]="{'is-invalid': userForm.get('firstName').invalid}"
+             pInputText
+             formControlName="firstName"/>
+      <div *ngIf="(userForm.get('firstName').dirty ||
+              userForm.get('firstName').touched) &&
+              userForm.get('firstName').getError('required')" class="invalid-feedback">
+        First name is required.
+      </div>
+    </div>
+
+    <!-- Lastname -->
+    <div class="form-group">
+      <input id="lastName" type="text" class="w-100" name="lastName" placeholder="Last name"
+             [ngClass]="{'is-invalid': userForm.get('lastName').invalid}"
+             pInputText
+             formControlName="lastName"/>
+    </div>
+
+  </form>
+
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary mr-1" label="Cancel" (click)="closeDialog()"></button>
+    <button pButton type="submit" class="ui-button-primary mr-1" label="Save"
+            [disabled]="userForm.invalid || isSubmitted"
+            (click)="updateUser()"></button>
+  </p-footer>
+</p-dialog>
+
