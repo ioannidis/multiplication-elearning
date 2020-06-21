@@ -5,6 +5,7 @@ import { DashboardIndexComponent } from './dashboard-index/dashboard-index.compo
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LayoutModule } from '../../shared/layout/layout.module';
 import { ButtonModule, CardModule, TableModule } from 'primeng';
+import {UserModule} from "../user/user.module";
 
 
 
@@ -17,6 +18,7 @@ import { ButtonModule, CardModule, TableModule } from 'primeng';
       CommonModule,
       DashboardRoutingModule,
       LayoutModule,
+      UserModule,
       TableModule,
       CardModule,
       ButtonModule

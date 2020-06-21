@@ -4,6 +4,7 @@ import {LessonInterface} from "../../../core/models/lesson/lesson.interface";
 import {forkJoin} from "rxjs";
 import {AchievementService} from "../../../core/services/achievement-service/achievement.service";
 import {Router} from "@angular/router";
+import {CurrentUserService} from "../../../core/services/current-user-service/current-user.service";
 
 @Component({
   selector: 'app-dashboard-index',
@@ -17,11 +18,15 @@ export class DashboardIndexComponent implements OnInit {
   public nextLesson: number = 1;
   public isAllLessonSucceed: boolean = true;
 
+  public isTeacher: any;
+
   constructor(private lessonService: LessonService,
               private achievementService: AchievementService,
+              private currentUserService: CurrentUserService,
               private router: Router) { }
 
   ngOnInit() {
+    this.isTeacher = this.currentUserService.hasCurrentUserPrivileges(['teacher']);
 
     forkJoin([
       this.lessonService.find(),
