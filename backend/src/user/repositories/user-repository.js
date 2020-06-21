@@ -33,15 +33,24 @@ const save = async (data) => {
 const findOneAndUpdate = async (data) => {
     try {
         const user = new User(data);
-        console.log(data);
-        console.log("==========")
-        console.log(user)
-        console.log("===========")
-        console.log("ANTE GAMISOU")
-        // await user.updateOne({_id: user._id}, user, () => {});
-        const a = await User.updateOne({username: data.user.username}, {password: data.password})
-        console.log(a)
+        await User.updateOne({username: data.user.username}, {password: data.password})
         return {data: {user}};
+    } catch (err) {
+        return err;
+    }
+};
+
+const findByIdAndUpdate = async (id, data) => {
+    try {
+        return await User.findByIdAndUpdate(id, data).exec();
+    } catch (err) {
+        return err;
+    }
+};
+
+const findOneAndDelete = async (filter) => {
+    try {
+        return await User.findOneAndDelete(filter).exec();
     } catch (err) {
         return err;
     }
@@ -51,6 +60,8 @@ module.exports = {
     find,
     findOne,
     findOneAndUpdate,
+    findOneAndDelete,
+    findByIdAndUpdate,
     save
 };
 
