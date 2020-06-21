@@ -1,7 +1,5 @@
 import {AfterContentChecked, AfterViewChecked, Component, OnInit} from '@angular/core';
-import { MenuItem } from 'primeng';
 import { Router } from '@angular/router';
-import { SearchService } from '../../../core/services/search-service/search.service';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import {CurrentUserService} from "../../../core/services/current-user-service/current-user.service";
 
@@ -18,8 +16,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
 
   public form: FormGroup;
 
-  constructor(private searchService: SearchService,
-              private currentUserService: CurrentUserService,
+  constructor(private currentUserService: CurrentUserService,
               private formBuilder: FormBuilder,
               private router: Router) {
     this.form = this.formBuilder.group({
