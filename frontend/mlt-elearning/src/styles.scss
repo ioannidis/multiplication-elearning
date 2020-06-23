@@ -27,3 +27,7 @@ display: none;
 img.grayscale {
   filter: grayscale(100%);
 }
+
+.no-cursor {
+  cursor: auto !important;
+}
