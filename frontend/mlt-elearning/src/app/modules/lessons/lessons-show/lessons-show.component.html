@@ -13,7 +13,30 @@
 
     <p-tabView>
       <p-tabPanel header="Theory" [selected]="true" [disabled]="isReviewActive">
-        <div [innerHTML]="lesson?.content"></div>
+        <div class="mb-4" [innerHTML]="lesson?.content"></div>
+
+        <div class="mb-4">
+          <p-table [value]="multiplication">
+            <ng-template pTemplate="header">
+              <tr>
+                <th colspan="5">Multiplication table</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-mult>
+              <tr>
+                <td>{{mult[0]}}</td>
+                <td> x </td>
+                <td>{{mult[1]}}</td>
+                <td> = </td>
+                <td>{{mult[2]}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+
+        <h5>Video</h5>
+        <iframe width="560" height="315" [src]="sanitizeVideoUrl()" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </p-tabPanel>
       <p-tabPanel header="Mini Review" [disabled]="!isReviewActive">
 
