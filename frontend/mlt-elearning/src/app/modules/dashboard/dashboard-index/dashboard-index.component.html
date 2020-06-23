@@ -4,7 +4,6 @@
   </div>
 </div>
 
-<div class="p-grid mb-5">
 
   <!-- Admin / Teacher -->
   <ng-container *ngIf="isTeacher">
@@ -27,16 +26,42 @@
 <!--  Student -->
   <ng-container *ngIf="!isTeacher">
 
-    <div class="p-grid p-justify-between mb-3">
+    <div class="p-grid">
       <div class="p-col-6">
-        <h5 class="mb-0 text-gray-600">Lessons</h5>
+        <h5 class="text-gray-600">Lessons</h5>
       </div>
     </div>
 
     <div class="p-grid">
 
+      <div class="p-col-3">
+        <button class="btn w-100">
+          <div class="card shadow h-100 py-2" style="min-height: 190px; cursor: auto"
+               [ngClass]="'border-left-info'">
+            <div class="card-body">
+              <div class="row no-gutters">
+                <div class="col mr-2">
+                  <h3 class="font-weight-bold text-uppercase mb-3"
+                      [ngClass]="'text-info'">Number 0</h3>
+                  <div class="text-md-left mb-1">The rule is that anything multiplied by 0 is equal to 0.</div>
+                </div>
+                <div class="col mr-2">
+                  <img [src]="'assets/img/animals/number-0.png'" alt="animal">
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="p-grid">
+
       <div *ngFor="let lesson of lessons" class="p-col-3">
         <button class="btn w-100" (click)="openLink(lesson.url)"
+                [ngClass]="{'no-cursor': (getLessonStatus(lesson._id, lesson.order) === 'dark')}"
                 [disabled]="getLessonStatus(lesson._id, lesson.order) === 'dark'">
           <div class="card shadow h-100 py-2" style="min-height: 190px"
                [ngClass]="'border-left-'+getLessonStatus(lesson._id, lesson.order)">
@@ -52,9 +77,6 @@
                 <div class="col mr-2">
                   <img [src]="'assets/img/animals/'+lesson.url+'.png'" [ngClass]="{'grayscale': (getLessonStatus(lesson._id, lesson.order) !== 'success')}" alt="animal">
                 </div>
-                <div class="col-auto">
-                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                </div>
               </div>
             </div>
           </div>
@@ -64,8 +86,3 @@
     </div>
 
   </ng-container>
-
-
-
-</div>
-
