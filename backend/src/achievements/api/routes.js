@@ -21,7 +21,6 @@ router.get('/', [accessMiddleware.hasAccess(['teacher'])], async (req, res, next
 router.post('/', [accessMiddleware.hasAccess(['teacher'])], async (req, res, next) => {
     try {
         const achievements = await achievementService.findOne({username: req.username});
-
         if (!achievements) {
             await achievementService.save({
                 username: req.username,

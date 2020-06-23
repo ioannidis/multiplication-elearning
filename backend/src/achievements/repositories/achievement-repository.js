@@ -32,9 +32,7 @@ const findOneAndUpdate = async (filter, data) => {
 
 const save = async (data) => {
     try {
-        const user = new Achievement(data);
-        await user.save();
-        return {data: {user}};
+        return new Achievement(data).save();
     } catch (err) {
         return err;
     }
