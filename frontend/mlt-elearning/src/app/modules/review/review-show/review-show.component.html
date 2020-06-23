@@ -49,7 +49,7 @@
         <app-exercise-four [math]="selectedMath[11]" [parentFormGroup]="reviewForm" [control]="'q12'" (nextStepEmitter)="nextStep($event)"></app-exercise-four>
       </p-tabPanel>
       <p-tabPanel>
-        <app-result></app-result>
+        <app-result [results]="result" [score]="score"></app-result>
       </p-tabPanel>
     </p-tabView>
 

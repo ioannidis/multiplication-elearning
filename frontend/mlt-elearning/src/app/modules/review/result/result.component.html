@@ -1,5 +1,24 @@
-<div class="math mb-2">
-  <p>Results</p>
+<div class="math mt-1 mb-2">
+  <h3><u>Score</u>: <span [ngClass]="{'text-success': (score >= 95),
+                                      'text-warning': (score >= 75 && score < 95),
+                                      'text-danger': (score < 75 )}">{{score}}%</span></h3>
+
+  <p-table [value]="results">
+    <ng-template>
+      <tr>
+        <th>Question</th>
+        <th>Result</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-result let-rowIndex="rowIndex">
+      <tr>
+        <td>Question {{rowIndex + 1}}</td>
+        <td>
+          <span [ngClass]="{'text-success': result, 'text-danger': !result}">{{(result) ? 'Correct' : 'Wrong'}}</span>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
 <button pButton
         class="ui-button"

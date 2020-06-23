@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -7,6 +7,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
+
+  @Input() results: any[];
+  @Input() score: Number;
 
   constructor(private route: Router) { }
 
