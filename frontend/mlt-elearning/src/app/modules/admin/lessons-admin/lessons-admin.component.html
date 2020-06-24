@@ -1,0 +1,86 @@
+<div class="p-grid p-justify-between mb-3">
+  <div class="p-col-6">
+    <h5 class="mb-0 text-gray-600">Lessons</h5>
+  </div>
+</div>
+
+<div class="card">
+
+  <p-table [value]="lessons">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Lessons</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-lesson>
+      <tr>
+        <td>{{lesson.title}}</td>
+        <td>
+          <button pButton type="button" class="ui-button-secondary mr-1" label="Details" icon="pi pi-eye" (click)="detailsDialog(lesson.url)"></button>
+          <button pButton type="button" class="ui-button-warning mr-1" label="Edit" icon="pi pi-pencil" (click)="editDialog(lesson)" ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+
+</div>
+
+
+<p-dialog *ngIf="lesson"  [(visible)]="displayDetails" [modal]="true" [style]="{width: '40vw'}">
+  <p-header>
+    Lesson details
+  </p-header>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input pInputText type="text" id="title" class="w-100"  placeholder="Title" disabled [value]="lesson?.title" />
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+    <p id="content" class="p-2"  style="border: 1px solid #e1e1e1" [innerHTML]="lesson?.content"></p>
+  </div>
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary mr-1" label="Close" (click)="closeDialog()"></button>
+  </p-footer>
+</p-dialog>
+
+<p-dialog *ngIf="displayEdit" [(visible)]="displayEdit" [modal]="true" [style]="{width: '40vw'}">
+  <p-header>
+    Edit Lesson
+  </p-header>
+  <form (ngSubmit)="updateLesson()" [formGroup]="lessonForm">
+    <input type="hidden" formControlName="_id" />
+    <input type="hidden" formControlName="url" />
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" class="w-100" name="title" placeholder="Title"
+             pInputText
+             formControlName="title"/>
+    </div>
+
+    <!-- Content -->
+    <div class="form-group">
+      <label for="content">Content</label>
+      <p-editor id="content" formControlName="content" [style]="{'height':'320px'}">
+        <p-header>
+        <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+        </span>
+        </p-header>
+      </p-editor>
+    </div>
+
+  </form>
+
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary mr-1" label="Cancel" (click)="closeDialog()"></button>
+    <button pButton type="submit" class="ui-button-primary mr-1" label="Save"
+            [disabled]="lessonForm.invalid || isSubmitted"
+            (click)="updateLesson()"></button>
+  </p-footer>
+</p-dialog>
+
