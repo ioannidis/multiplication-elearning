@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import {MenubarModule} from 'primeng/menubar';
 import { ReactiveFormsModule } from '@angular/forms';
+import {RouterModule} from "@angular/router";
 
 
 
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     MenubarModule
   ],
   exports: [
