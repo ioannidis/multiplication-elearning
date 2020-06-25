@@ -14,7 +14,7 @@ import {ButtonModule, TableModule} from "primeng";
 @NgModule({
   declarations: [
     LessonsComponent,
-    LessonsShowComponent
+    LessonsShowComponent,
   ],
     imports: [
         CommonModule,

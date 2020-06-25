@@ -10,8 +10,6 @@ import {CurrentUserService} from "../../../core/services/current-user-service/cu
 })
 export class HeaderComponent implements OnInit, AfterContentChecked {
 
-  // public items: MenuItem[];
-
   public currentUser: any;
 
   public form: FormGroup;
