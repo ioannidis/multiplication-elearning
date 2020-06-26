@@ -6,6 +6,9 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import {MenubarModule} from 'primeng/menubar';
 import { ReactiveFormsModule } from '@angular/forms';
 import {RouterModule} from "@angular/router";
+import { HelpStudentComponent } from './help-student/help-student.component';
+import { HelpTeacherComponent } from './help-teacher/help-teacher.component';
+import {ButtonModule, DialogModule, TabViewModule} from "primeng";
 
 
 
@@ -13,13 +16,18 @@ import {RouterModule} from "@angular/router";
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SideNavComponent
+    SideNavComponent,
+    HelpStudentComponent,
+    HelpTeacherComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    MenubarModule
+    MenubarModule,
+    DialogModule,
+    ButtonModule,
+    TabViewModule
   ],
   exports: [
     HeaderComponent,

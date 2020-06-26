@@ -8,8 +8,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ErrorModule} from "./core/error/error.module";
 import {AuthTokenInterceptor} from "./core/interceptors/auth-token.interceptor";
 import {GlobalErrorInterceptor} from "./core/interceptors/global-error/global-error.interceptor";
-import {ReactiveFormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [

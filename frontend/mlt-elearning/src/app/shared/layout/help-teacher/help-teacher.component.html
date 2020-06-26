@@ -1,0 +1,62 @@
+<p-dialog *ngIf="showHelp === 'teacher'" [(visible)]="display" [modal]="true" [style]="{width: '65vw'}">
+  <p-header>
+    Teacher Help
+  </p-header>
+
+    <p-tabView>
+      <p-tabPanel header="Student">
+        <h4>Student management</h4>
+        <div class="w-100">
+          <div class="mb-3">
+            <h5>Display student academic performance</h5>
+            <p>
+              By clicking on the "Details" button you can see the progress of each student, ie in which courses he has attended
+              and in which he has been successfully examined, as well as the grade he received.
+            </p>
+            <img class="w-100 mb-2" src="assets/img/help/admin/admin-1.png" alt="admin-img">
+            <img class="w-100" src="assets/img/help/admin/admin-2.png" alt="admin-img">
+          </div>
+          <div class="mb-3">
+            <h5>Edit student details</h5>
+            <p>
+              Pressing the "Edit" button can edit the student's basic information. Pressing "Save" saves the changes, one
+              pressing "Cancel" cancels and closes the dialog box.
+            </p>
+            <img class="w-100 mb-2" src="assets/img/help/admin/admin-3.png" alt="admin-img">
+          </div>
+          <div class="mb-3">
+            <h5>Delete student</h5>
+            <p>
+              Clicking on the "Delete" button to delete the student from the application.
+            </p>
+            <img class="w-100 mb-2" src="assets/img/help/admin/admin-4.png" alt="admin-img">
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Lesson">
+        <h4>Lesson management</h4>
+        <div class="w-100">
+          <div class="mb-3">
+            <h5>Display lesson details</h5>
+            <p>
+              By clicking on the "Details" button, you can see the basic details of each lesson.
+            </p>
+            <img class="w-100 mb-2" src="assets/img/help/admin/admin-1.png" alt="admin-img">
+            <img class="w-100" src="assets/img/help/admin/admin-5.png" alt="admin-img">
+          </div>
+          <div class="mb-3">
+            <h5>Edit lesson details</h5>
+            <p>
+              By clicking on the "Edit" button, you can edit the basic details of each lesson.
+              Pressing "Save" saves the changes, on pressing "Cancel" cancels and closes the dialog box.
+            </p>
+            <img class="w-100 mb-2" src="assets/img/help/admin/admin-6.png" alt="admin-img">
+          </div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary mr-1" label="Close" (click)="closeHelp()"></button>
+  </p-footer>
+</p-dialog>

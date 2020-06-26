@@ -11,6 +11,7 @@ import {CurrentUserService} from "../../../core/services/current-user-service/cu
 export class HeaderComponent implements OnInit, AfterContentChecked {
 
   public currentUser: any;
+  public displayHelp: string;
 
   public form: FormGroup;
 
@@ -30,6 +31,14 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
     this.currentUser = this.currentUserService.getCurrentUser();
   }
 
+  showHelp(role: string) {
+    console.log(role);
+    this.displayHelp = role;
+  }
+
+  closeHelp() {
+    this.displayHelp = null;
+  }
 
   onSubmit(): void {
     this.router.onSameUrlNavigation = 'reload';

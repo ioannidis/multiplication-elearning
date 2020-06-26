@@ -19,6 +19,24 @@
         </a>
       </li>
 
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link" role="button" style="cursor: pointer">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small" (click)="showHelp('teacher')">Help</span>
+        </a>
+      </li>
+
+      <div class="topbar-divider d-none d-sm-block"></div>
+
+    </ng-container>
+
+    <ng-container *ngIf="currentUser?.role === 'student'">
+
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link" role="button" style="cursor: pointer">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small" (click)="showHelp('student')">Help</span>
+        </a>
+      </li>
+
       <div class="topbar-divider d-none d-sm-block"></div>
 
     </ng-container>
@@ -41,3 +59,7 @@
   </ul>
 
 </nav>
+
+
+<app-help-student [showHelp]="displayHelp" (closeHelpEvent)="closeHelp()"></app-help-student>
+<app-help-teacher [showHelp]="displayHelp" (closeHelpEvent)="closeHelp()"></app-help-teacher>

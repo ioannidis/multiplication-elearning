@@ -1,0 +1,155 @@
+<p-dialog *ngIf="showHelp === 'student'" [(visible)]="display" [modal]="true" [style]="{width: '65vw'}">
+  <p-header>
+    Student Help
+  </p-header>
+
+  <p-tabView>
+    <p-tabPanel header="Lessons">
+      <h4>Lessons</h4>
+      <div class="w-100">
+        <div class="mb-3">
+          <h5>Lessons list</h5>
+          <p>
+            Once a student is connected to the application, he immediately goes to the "Dashboard" where all the lessons
+            are presented.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-1.png" alt="student-img">
+          <p>
+            The courses consist of:
+          </p>
+          <ul>
+            <li>The number zero, where the theory of multiplication by 0 is taught.</li>
+            <li>The numbers from 1 to 10, where the relevant theory is presented and a small evaluation test is performed.</li>
+            <li>Review 1 which is a test on numbers 1, 2, 3.</li>
+            <li>Review 2 which is a test on numbers 4, 5, 6.</li>
+            <li>Review 3 which is a test on numbers 7, 8, 9.</li>
+            <li>The final review which is the final test and includes questions on all numbers.</li>
+          </ul>
+        </div>
+        <div class="mb-3">
+          <h5>Teaching process</h5>
+          <p>
+            The teaching of each lesson consists of theory and examination with a mini review test.
+            The students can read the content that is provided by their teacher, can read the multiplication table and
+            then they can watch the education video.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-2.jpg" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-3.jpg" alt="student-img">
+          <p>
+            After the student finishes with the theory, they can click on the “Mini Review” tab to start the test and
+            evaluate the knowledge they have received!
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-4.jpg" alt="student-img">
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Questions">
+      <h4>Type of questions</h4>
+      <div class="w-100">
+        <div class="mb-3">
+          <h5>Fill in the blanks</h5>
+          <p>
+            The three variants shown in the following images are used to fill in the blanks.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-5.png" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-6.png" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-7.png" alt="student-img">
+        </div>
+        <div class="mb-3">
+          <h5>Choosing the right answer</h5>
+          <p>
+            The result of the multiplication is given, and the student is asked to choose one of the two answers.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-8.png" alt="student-img">
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Evaluation">
+      <div class="w-100">
+        <div class="mb-3">
+          <h5>Student performance evaluation</h5>
+          <p>
+            There are three levels for student assessment:
+          </p>
+          <ol>
+            <li>100 is considered the ultimate excellent!</li>
+            <li>Degree greater than or equal to 95 (Excellent)</li>
+            <li>Degree greater than or equal to 75 and less than 95 (Good)</li>
+            <li>Degree less than 75 (Failure)</li>
+          </ol>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-13.png" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-14.png" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-15.png" alt="student-img">
+        </div>
+
+        <div class="mb-3">
+          <h5>Gradual evaluation</h5>
+          <p>
+            As shown in the following figures, the lessons are locked, and in order to unlock the next lessons, all the previous
+            ones must have been completed, ie the student must have been evaluated with a grade grater than 75.
+            The currently available course is shown in blue, while the ones in gray are locked.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-16.png" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-17.jpg" alt="student-img">
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Reviews">
+      <div class="w-100">
+        <div class="mb-3">
+          <h5>Mini reviews</h5>
+          <p>
+            The small tests, after each number, consist of 6 questions.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-9.png" alt="student-img">
+        </div>
+        <div class="mb-3">
+          <h5>Review</h5>
+          <p>
+            Each review refers to the previous three numbers from it. For example, review 1 is for the numbers 1, 2, 3.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-10.png" alt="student-img">
+        </div>
+        <div class="mb-3">
+          <h5>Final review</h5>
+          <p>
+            The final review includes questions for all numbers, from 1 to 10. It includes 24 questions.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-11.png" alt="student-img">
+        </div>
+        <div class="mb-3">
+          <h5>Result</h5>
+          <p>
+            At the end of each review test, the student's grade is presented, as well as the results of each question.
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-12.png" alt="student-img">
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Reward">
+      <div class="w-100">
+        <div class="mb-3">
+          <h5>Reward system</h5>
+          <p>
+            To motivate students to perform better, the application uses a reward system.
+            More specifically, the indirect goal of the students is to collect all 17 animals! Each animal unlocks only
+            when the student scores with excellent (> = 95) in the corresponding lesson!
+          </p>
+          <img class="w-100 mb-2" src="assets/img/help/student/student-18.png" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-19.png" alt="student-img">
+          <img class="w-100 mb-2" src="assets/img/help/student/student-20.png" alt="student-img">
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+
+
+
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary mr-1" label="Close" (click)="closeHelp()"></button>
+  </p-footer>
+</p-dialog>
