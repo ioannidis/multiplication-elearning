@@ -19,4 +19,8 @@ export class LessonService {
   findOne(lessonId): Observable<any> {
     return this.http.get(`${this.BASE_URL}/${lessonId}`)
   }
+
+  update(lesson: any): Observable<any> {
+    return this.http.put(`${this.BASE_URL}/${lesson.url}`, lesson);
+  }
 }

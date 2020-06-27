@@ -66,16 +66,16 @@ export class LessonsAdminComponent implements OnInit {
 
     console.log(this.lessonForm.value);
 
-    // this.userService.update(this.lessonForm.value)
-    //   .subscribe(res => {
-    //       console.log(res);
-    //       this.isSubmitted = false;
-    //       this.closeDialog();
-    //       location.reload();
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     })
+    this.lessonService.update(this.lessonForm.value)
+      .subscribe(res => {
+          console.log(res);
+          this.isSubmitted = false;
+          this.closeDialog();
+          location.reload();
+        },
+        error => {
+          console.log(error);
+        })
 
   }
 
