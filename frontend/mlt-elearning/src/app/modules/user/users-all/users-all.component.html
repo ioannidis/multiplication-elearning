@@ -49,11 +49,7 @@
     <ng-template pTemplate="body" let-lesson>
       <tr>
         <td>{{lesson.title}}</td>
-        <td [ngClass]="{
-            'text-danger' : (userAchievement[lesson?._id]?.percentage < 75),
-            'text-warning' : (userAchievement[lesson?._id]?.percentage < 95 && userAchievement[lesson?._id]?.percentage >= 75),
-            'text-success' : (userAchievement[lesson?._id]?.percentage >= 95)
-          }">{{userAchievement[lesson?._id]?.percentage || '-'}}</td>
+        <td [ngClass]="'text-'+getLessonStatus(lesson?._id)">{{getLessonScore(lesson?._id)}} {{getLessonEvaluation(lesson?._id)}}</td>
       </tr>
     </ng-template>
   </p-table>

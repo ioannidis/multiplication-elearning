@@ -94,4 +94,35 @@ export class UsersAllComponent implements OnInit {
 
   }
 
+
+  getLessonStatus(lessonId) {
+      if (this.userAchievement[lessonId]?.percentage < 75) {
+        return 'danger';
+      }else if (this.userAchievement[lessonId]?.percentage >= 75 && this.userAchievement[lessonId]?.percentage <= 95) {
+        return 'warning';
+      } else if (this.userAchievement[lessonId]?.percentage > 95) {
+        return 'success';
+      }
+      return 'secondary';
+  }
+
+  getLessonScore(lessonId) {
+    if (this.userAchievement.hasOwnProperty(lessonId))
+      return this.userAchievement[lessonId].percentage + "%";
+    return "-"
+  }
+
+  getLessonEvaluation(lessonId) {
+    if (this.userAchievement.hasOwnProperty(lessonId)) {
+      if (this.userAchievement[lessonId].percentage < 75) {
+        return '- Fail [F]';
+      } else if (this.userAchievement[lessonId].percentage >= 75 && this.userAchievement[lessonId].percentage <= 95) {
+        return '- Pass [B]';
+      } else if (this.userAchievement[lessonId].percentage > 95) {
+        return '- Excellent [A]';
+      }
+    }
+    return ""
+  }
+
 }

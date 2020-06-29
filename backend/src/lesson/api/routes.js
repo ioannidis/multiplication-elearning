@@ -33,6 +33,8 @@ router.get('/:url', async (req, res, next) => {
 
 router.put('/:url', [roleMiddleware.hasRole('teacher')], async (req, res, next) => {
     try {
+
+        console.log(req.body)
         const lesson = await lessonService.findOneAndUpdate({url: req.params.url}, req.body);
 
         if (!lesson)

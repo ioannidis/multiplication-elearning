@@ -2,6 +2,10 @@
   <h3><u>Score</u>: <span [ngClass]="{'text-success': (score >= 95),
                                       'text-warning': (score >= 75 && score < 95),
                                       'text-danger': (score < 75 )}">{{score}}%</span></h3>
+  <h5 class="text-uppercase mb-1"
+      [ngClass]="{'text-success': (score >= 95),
+                  'text-warning': (score >= 75 && score < 95),
+                  'text-danger': (score < 75 )}">{{getLessonEvaluation()}}</h5>
 
   <p-table [value]="results">
     <ng-template>

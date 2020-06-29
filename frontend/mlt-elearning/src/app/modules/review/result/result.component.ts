@@ -16,6 +16,16 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getLessonEvaluation() {
+    if (this.score < 75) {
+      return 'Fail [F]';
+    } else if (this.score >= 75 && this.score <= 95) {
+      return 'Pass [B]';
+    } else if (this.score > 95) {
+      return 'Excellent [A]';
+    }
+  }
+
   backToDashBoard() {
     this.route.navigate([''])
   }

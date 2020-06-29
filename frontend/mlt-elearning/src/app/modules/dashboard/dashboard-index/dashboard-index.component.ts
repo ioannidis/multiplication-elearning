@@ -63,6 +63,19 @@ export class DashboardIndexComponent implements OnInit {
     return "-"
   }
 
+  getLessonEvaluation(lessonId) {
+    if (this.achievements.hasOwnProperty(lessonId)) {
+      if (this.achievements[lessonId].percentage < 75) {
+        return 'Fail [F]';
+      } else if (this.achievements[lessonId].percentage >= 75 && this.achievements[lessonId].percentage <= 95) {
+        return 'Pass [B]';
+      } else if (this.achievements[lessonId].percentage > 95) {
+        return 'Excellent [A]';
+      }
+    }
+    return ""
+  }
+
   calcLessonSucceed() {
     for (let lesson in this.achievements) {
       if (this.achievements.hasOwnProperty(lesson)) {

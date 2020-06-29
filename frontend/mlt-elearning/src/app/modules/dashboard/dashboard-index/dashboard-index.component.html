@@ -68,6 +68,8 @@
                   <div class="text-md-center mb-1">Score:</div>
                   <h4 class="font-weight-bold text-uppercase mb-1"
                       [ngClass]="'text-'+getLessonStatus(lesson._id, lesson.order)">{{getLessonScore(lesson._id)}}</h4>
+                  <h5 class="text-uppercase mb-1"
+                      [ngClass]="'text-'+getLessonStatus(lesson._id, lesson.order)">{{getLessonEvaluation(lesson._id)}}</h5>
                 </div>
                 <div class="col mr-2">
                   <img [src]="'assets/img/animals/'+lesson.url+'.png'" [ngClass]="{'grayscale': (getLessonStatus(lesson._id, lesson.order) !== 'success')}" alt="animal">
