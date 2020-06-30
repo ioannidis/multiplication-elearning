@@ -19,21 +19,6 @@ export class AuthService {
 
   public authenticate(username: string, password: string): Observable<any> {
 
-    // const encodedData = btoa(`${environment.basic.username}:${environment.basic.password}`);
-    //
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     Authorization: `Basic ${encodedData}`
-    //   }),
-    //   observe: 'response' as 'response'
-    // };
-
-    // const payload = new FormData();
-    // payload.append('username', email);
-    // payload.append('password', password);
-    // payload.append('grant_type', environment.basic.grant_type);
-    // payload.append('scope', environment.basic.scope);
-
     const payload = {
       username,
       password

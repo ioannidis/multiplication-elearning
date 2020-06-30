@@ -15,9 +15,13 @@ export class AuthGuard implements CanActivate {
 
     if (authToken) {
       try {
-        if (this.authService.validate(authToken)) {
-          return true;
-        }
+        // @ts-ignore
+        return this.authService.validate(authToken).toPromise()
+          .then(x => true)
+          .catch(x => {
+            console.log(x);
+            this.redirectToLogin();
+          });
       } catch (error) {
         return this.redirectToLogin();
       }
@@ -28,6 +32,7 @@ export class AuthGuard implements CanActivate {
 
     redirectToLogin(): boolean {
       localStorage.removeItem('token');
+      localStorage.removeItem('current_user');
       this.router.navigate(['auth']);
       return false;
     }

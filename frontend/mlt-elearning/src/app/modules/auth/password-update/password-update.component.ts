@@ -32,11 +32,13 @@ export class PasswordUpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
     this.authService.passwordUpdate(this.form.value, this.passwordResetId)
       .subscribe(x => {
         this.router.navigate(['/auth', 'login']);
-      });
+      },
+        error => {
+          this.router.navigate(['/404']);
+        });
   }
 
 }
